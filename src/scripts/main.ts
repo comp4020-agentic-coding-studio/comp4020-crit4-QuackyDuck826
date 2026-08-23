@@ -74,16 +74,15 @@ function trigger(characterId: string, octave: number, degree: number, time: numb
     case "bass-pulse":
       // Triangle and sine read quieter than square at the same peak gain
       // (less harmonic content), so pulse and skip get a boost square
-      // doesn't need.
-      playBass(ctx, destination, time, scaleFreq(octave, degree), "triangle", 0.7);
+      // doesn't need - and get pushed to octave 0 (see characters.ts) so
+      // they're not buried in a mix with beat-kick.
+      playBass(ctx, destination, time, scaleFreq(octave, degree), "triangle", 0.9);
       break;
     case "bass-walk":
       playBass(ctx, destination, time, scaleFreq(octave, degree), "square");
       break;
     case "bass-skip":
-      // Sine has no harmonics at all to help it read as loud, especially
-      // this low in the register - needs pushing further than triangle did.
-      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine", 0.95);
+      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine", 1);
       break;
     case "melody-pluck":
       playPluck(ctx, destination, time, scaleFreq(octave, degree));

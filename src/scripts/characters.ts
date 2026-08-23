@@ -105,7 +105,10 @@ export const CHARACTERS: readonly CharacterDef[] = [
     label: "Pulse bass",
     category: "bass",
     shape: "square",
-    octave: -1,
+    // One octave higher than bass-walk: its triangle wave has no harmonics
+    // to help it cut through a mix, and down at octave -1 it collided with
+    // beat-kick's pitch-drop range and effectively disappeared.
+    octave: 0,
     pattern: pattern([
       [0, 0],
       [4, 0],
@@ -131,7 +134,9 @@ export const CHARACTERS: readonly CharacterDef[] = [
     label: "Skip bass",
     category: "bass",
     shape: "cross",
-    octave: -1,
+    // Same reasoning as bass-pulse: a sine has only its fundamental, so
+    // octave -1 put it below what most speakers reproduce at all.
+    octave: 0,
     pattern: pattern([
       [0, 0],
       [3, 2],
