@@ -47,12 +47,16 @@ a {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  padding: 0.4rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   background: var(--color-surface);
   color: inherit;
-  font: inherit;
   cursor: pointer;
   z-index: 10;
 }
@@ -64,4 +68,25 @@ a {
 .theme-toggle:focus-visible {
   outline: 3px solid var(--color-link);
   outline-offset: 2px;
+}
+
+.theme-toggle .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.theme-toggle .icon-moon {
+  display: block;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
 }

@@ -9,17 +9,26 @@
 }
 
 .all-toggle {
-  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   background: var(--color-surface);
   cursor: pointer;
-  font: inherit;
   color: inherit;
 }
 
 .all-toggle:hover {
   background: var(--color-tile-bg-hover);
+}
+
+.all-toggle .icon {
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .all-toggle:focus-visible {
