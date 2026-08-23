@@ -16,6 +16,10 @@ import { CHARACTERS } from "../scripts/characters";
   <main>
     <h1>Loopwright</h1>
     <p class="hint">Tap a shape to start.</p>
+    <div class="all-controls">
+      <button type="button" class="all-toggle" data-all-action="on">All on</button>
+      <button type="button" class="all-toggle" data-all-action="off">All off</button>
+    </div>
     <div class="character-grid">
       {
         CHARACTERS.map((character) => (

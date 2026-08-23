@@ -171,4 +171,21 @@ for (const button of document.querySelectorAll<HTMLButtonElement>("[data-charact
   });
 }
 
+function setAllActive(active: boolean): void {
+  for (const [id, button] of buttonsById) {
+    activeFlags.set(id, active);
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  }
+}
+
+document.querySelector<HTMLButtonElement>('[data-all-action="on"]')?.addEventListener("click", () => {
+  ensureAudio();
+  setAllActive(true);
+});
+
+document.querySelector<HTMLButtonElement>('[data-all-action="off"]')?.addEventListener("click", () => {
+  setAllActive(false);
+});
+
 requestAnimationFrame(drawLoop);
