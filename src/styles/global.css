@@ -37,12 +37,20 @@ body {
 main {
   max-width: 40rem;
   margin: 0 auto;
+  container-type: inline-size;
 }
 
 h1 {
   font-family: "Unbounded", system-ui, sans-serif;
   font-weight: 800;
   letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+  /* Sized in container-width units, not rem, so the headline tracks
+     whatever width `main` (and the character grid inside it) actually
+     is, rather than being one fixed size that only matches at one
+     viewport width. */
+  font-size: 13.5cqw;
 }
 
 a {
