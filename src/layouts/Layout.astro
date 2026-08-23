@@ -28,8 +28,43 @@ const { title, description } = Astro.props;
       content={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/card.png`}
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Runs before paint so the page never flashes light-then-dark (or vice
+      versa) on load. Deliberately is:inline: it has to be synchronous and
+      has nothing worth type-checking.
+    -->
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored === "light" || stored === "dark"
+            ? stored
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Dark</button>
+    <script is:inline>
+      (function () {
+        var button = document.getElementById("theme-toggle");
+        function label(theme) {
+          button.textContent = theme === "dark" ? "Light" : "Dark";
+          button.setAttribute("aria-pressed", String(theme === "dark"));
+        }
+        label(document.documentElement.getAttribute("data-theme"));
+        button.addEventListener("click", function () {
+          var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          label(next);
+        });
+      })();
+    </script>
     <slot />
   </body>
 </html>

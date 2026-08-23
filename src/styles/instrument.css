@@ -1,5 +1,5 @@
 .hint {
-  color: #555;
+  color: var(--color-muted);
 }
 
 .all-controls {
@@ -10,20 +10,20 @@
 
 .all-toggle {
   padding: 0.5rem 1rem;
-  border: 1px solid #c9c9d2;
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
-  background: #fff;
+  background: var(--color-surface);
   cursor: pointer;
   font: inherit;
   color: inherit;
 }
 
 .all-toggle:hover {
-  background: #f2f2f5;
+  background: var(--color-tile-bg-hover);
 }
 
 .all-toggle:focus-visible {
-  outline: 3px solid #0b5fff;
+  outline: 3px solid var(--color-link);
   outline-offset: 2px;
 }
 
@@ -49,7 +49,7 @@
   padding: 0.6rem;
   border: none;
   border-radius: 0.75rem;
-  background: #f2f2f5;
+  background: var(--color-tile-bg);
   cursor: pointer;
   font: inherit;
   color: inherit;
@@ -57,22 +57,22 @@
 }
 
 .character:hover {
-  background: #e6e6ec;
+  background: var(--color-tile-bg-hover);
 }
 
 .character:focus-visible {
-  outline: 3px solid #0b5fff;
+  outline: 3px solid var(--color-link);
   outline-offset: 2px;
 }
 
 .character.is-active {
-  background: #dbe8ff;
+  background: var(--color-tile-active-bg);
 }
 
 .character .shape {
   width: 100%;
   height: 100%;
-  background: #8892a6;
+  background: var(--color-shape);
 }
 
 .character.is-active .shape {
