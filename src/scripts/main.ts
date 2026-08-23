@@ -81,7 +81,9 @@ function trigger(characterId: string, octave: number, degree: number, time: numb
       playBass(ctx, destination, time, scaleFreq(octave, degree), "square");
       break;
     case "bass-skip":
-      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine", 0.7);
+      // Sine has no harmonics at all to help it read as loud, especially
+      // this low in the register - needs pushing further than triangle did.
+      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine", 0.95);
       break;
     case "melody-pluck":
       playPluck(ctx, destination, time, scaleFreq(octave, degree));
