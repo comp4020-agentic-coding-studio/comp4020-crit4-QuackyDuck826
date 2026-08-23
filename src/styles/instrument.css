@@ -1,0 +1,165 @@
+.hint {
+  color: #555;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #f2f2f5;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: background-color 150ms ease;
+}
+
+.character:hover {
+  background: #e6e6ec;
+}
+
+.character:focus-visible {
+  outline: 3px solid #0b5fff;
+  outline-offset: 2px;
+}
+
+.character.is-active {
+  background: #dbe8ff;
+}
+
+.character .shape {
+  width: 3rem;
+  height: 3rem;
+  background: #8892a6;
+}
+
+.character.is-active .shape {
+  background: var(--character-color, #0b5fff);
+}
+
+.character .label {
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.character--beat {
+  --character-color: #e05252;
+}
+
+.character--bass {
+  --character-color: #3a7d44;
+}
+
+.character--melody {
+  --character-color: #cc8a1e;
+}
+
+.character--lead {
+  --character-color: #0b5fff;
+}
+
+.character--fx {
+  --character-color: #a355c9;
+}
+
+.character--texture {
+  --character-color: #2aa9a0;
+}
+
+.character--circle .shape {
+  border-radius: 50%;
+}
+
+.character--square .shape {
+  border-radius: 0.25rem;
+}
+
+.character--triangle .shape {
+  background: transparent;
+  width: 0;
+  height: 0;
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-bottom: 2.75rem solid #8892a6;
+}
+
+.character--triangle.is-active .shape {
+  border-bottom-color: var(--character-color, #0b5fff);
+}
+
+.character--diamond .shape {
+  border-radius: 0.25rem;
+  transform: rotate(45deg);
+}
+
+.character--hexagon .shape {
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+}
+
+.character--star .shape {
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.character--pentagon .shape {
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.character--ring .shape {
+  background: transparent;
+  border: 0.5rem solid #8892a6;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.character--ring.is-active .shape {
+  border-color: var(--character-color, #0b5fff);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .character.pulse .shape {
+    animation: character-pulse 200ms ease-out;
+  }
+}
+
+@keyframes character-pulse {
+  0% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.character--diamond.pulse .shape {
+  animation-name: character-pulse-diamond;
+}
+
+@keyframes character-pulse-diamond {
+  0% {
+    transform: rotate(45deg) scale(1.35);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}

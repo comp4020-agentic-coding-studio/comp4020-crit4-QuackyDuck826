@@ -1,10 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/instrument.css";
+import { CHARACTERS } from "../scripts/characters";
 ---
 
 <Layout
-  title="COMP4020 prototype"
-  description="Replace this with one sentence saying what this page is. A search result and a link preview both show it."
+  title="Loopwright — a click-together instrument"
+  description="Eight tappable shapes, one shared scale and tempo: toggle any combination and the loops lock together, so nothing you play can clash."
 >
   <header>
     <nav aria-label="Primary">
@@ -12,12 +14,23 @@ import Layout from "../layouts/Layout.astro";
     </nav>
   </header>
   <main>
-    <h1>COMP4020 prototype</h1>
-    <p data-testid="intro">
-      Replace this with your prototype. This week's brief is on the course
-      website; <code>spec/README.md</code> explains how the checks in this repo
-      relate to it.
-    </p>
+    <h1>Loopwright</h1>
+    <p class="hint">Tap a shape to start.</p>
+    <div class="character-grid">
+      {
+        CHARACTERS.map((character) => (
+          <button
+            type="button"
+            class={`character character--${character.category} character--${character.shape}`}
+            data-character-id={character.id}
+            aria-pressed="false"
+          >
+            <span class="shape" aria-hidden="true" />
+            <span class="label">{character.label}</span>
+          </button>
+        ))
+      }
+    </div>
   </main>
   <script src="../scripts/main.ts"></script>
 </Layout>

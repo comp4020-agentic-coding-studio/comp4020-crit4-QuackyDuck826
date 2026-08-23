@@ -11,4 +11,10 @@ export default defineConfig({
   base: "/comp4020-crit4-QuackyDuck826",
   build: { format: "file" },
   compressHTML: true,
+  // spec/instrument.test.ts reads only dist/index.html, so main.ts's bundled
+  // script (which pulls in scheduler/characters/voices) has to stay inlined
+  // rather than emitted as an external hashed _astro/*.js file. Astro inlines
+  // a hoisted script under Vite's assetsInlineLimit (default 4kb); this
+  // headroom keeps it inlined as the instrument grows.
+  vite: { build: { assetsInlineLimit: 65536 } },
 });
