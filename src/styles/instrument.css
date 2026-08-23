@@ -36,10 +36,10 @@
 
 .character {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0.5rem;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: 0.6rem;
   border: none;
   border-radius: 0.75rem;
   background: #f2f2f5;
@@ -63,8 +63,8 @@
 }
 
 .character .shape {
-  width: 3rem;
-  height: 3rem;
+  width: 100%;
+  height: 100%;
   background: #8892a6;
 }
 
@@ -105,19 +105,12 @@
 }
 
 .character--triangle .shape {
-  background: transparent;
-  width: 0;
-  height: 0;
-  border-left: 1.5rem solid transparent;
-  border-right: 1.5rem solid transparent;
-  border-bottom: 2.75rem solid #8892a6;
-}
-
-.character--triangle.is-active .shape {
-  border-bottom-color: var(--character-color, #0b5fff);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
 .character--diamond .shape {
+  width: 70%;
+  height: 70%;
   border-radius: 0.25rem;
   transform: rotate(45deg);
 }
@@ -147,7 +140,7 @@
 
 .character--ring .shape {
   background: transparent;
-  border: 0.5rem solid #8892a6;
+  border: 0.65rem solid #8892a6;
   border-radius: 50%;
   box-sizing: border-box;
 }
@@ -178,8 +171,8 @@
 }
 
 .character--oval .shape {
-  width: 3.5rem;
-  height: 2.2rem;
+  width: 100%;
+  height: 63%;
   border-radius: 50%;
 }
 
@@ -200,20 +193,22 @@
 }
 
 .character--teardrop .shape {
+  width: 70%;
+  height: 70%;
   border-radius: 50% 50% 50% 0%;
   transform: rotate(45deg);
 }
 
 .character--arch .shape {
-  width: 2.2rem;
-  height: 3.2rem;
+  width: 68%;
+  height: 100%;
   border-radius: 50% 50% 0% 0% / 65% 65% 0% 0%;
 }
 
 .character--semicircle .shape {
-  width: 3.5rem;
-  height: 1.75rem;
-  border-radius: 3.5rem 3.5rem 0% 0%;
+  width: 100%;
+  height: 50%;
+  border-radius: 50% 50% 0% 0% / 100% 100% 0% 0%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
