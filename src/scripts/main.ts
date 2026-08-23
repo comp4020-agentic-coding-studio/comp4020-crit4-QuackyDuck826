@@ -191,4 +191,18 @@ document.querySelector<HTMLButtonElement>('[data-all-action="off"]')?.addEventLi
   setAllActive(false);
 });
 
+const themeToggle = document.getElementById("theme-toggle");
+
+function syncThemePressed(): void {
+  themeToggle?.setAttribute("aria-pressed", String(document.documentElement.getAttribute("data-theme") === "dark"));
+}
+
+syncThemePressed();
+themeToggle?.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  syncThemePressed();
+});
+
 requestAnimationFrame(drawLoop);
