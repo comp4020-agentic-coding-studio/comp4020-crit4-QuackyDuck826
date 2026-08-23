@@ -191,7 +191,7 @@ export function playClap(ctx: AudioContext, destination: AudioNode, time: number
 
 export function playBell(ctx: AudioContext, destination: AudioNode, time: number, freq: number): void {
   const gain = ctx.createGain();
-  gain.gain.setValueAtTime(0.2, time);
+  gain.gain.setValueAtTime(0.06, time);
   gain.gain.exponentialRampToValueAtTime(SILENCE, time + 0.9);
   gain.connect(destination);
 
