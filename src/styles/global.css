@@ -39,6 +39,12 @@ main {
   margin: 0 auto;
 }
 
+h1 {
+  font-family: "Unbounded", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 a {
   color: var(--color-link);
 }
