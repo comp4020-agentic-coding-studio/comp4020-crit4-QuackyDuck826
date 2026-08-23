@@ -5,12 +5,22 @@ export type CharacterCategory = "beat" | "bass" | "melody" | "lead" | "fx" | "te
 export type CharacterShape =
   | "circle"
   | "triangle"
+  | "octagon"
   | "square"
   | "diamond"
+  | "cross"
   | "hexagon"
+  | "oval"
+  | "trapezoid"
   | "star"
+  | "parallelogram"
+  | "chevron"
   | "pentagon"
-  | "ring";
+  | "arrow"
+  | "teardrop"
+  | "ring"
+  | "arch"
+  | "semicircle";
 
 export interface CharacterDef {
   id: string;
@@ -79,6 +89,18 @@ export const CHARACTERS: readonly CharacterDef[] = [
     ]),
   },
   {
+    id: "beat-clap",
+    label: "Clap",
+    category: "beat",
+    shape: "octagon",
+    octave: 0,
+    // The backbeat (2 and 4): steps 4 and 12 of 16.
+    pattern: pattern([
+      [4, 0],
+      [12, 0],
+    ]),
+  },
+  {
     id: "bass-pulse",
     label: "Pulse bass",
     category: "bass",
@@ -105,6 +127,20 @@ export const CHARACTERS: readonly CharacterDef[] = [
     ]),
   },
   {
+    id: "bass-skip",
+    label: "Skip bass",
+    category: "bass",
+    shape: "cross",
+    octave: -1,
+    pattern: pattern([
+      [0, 0],
+      [3, 2],
+      [6, 1],
+      [10, 2],
+      [13, 0],
+    ]),
+  },
+  {
     id: "melody-pluck",
     label: "Pluck",
     category: "melody",
@@ -116,6 +152,32 @@ export const CHARACTERS: readonly CharacterDef[] = [
       [9, 3],
       [12, 0],
       [14, 2],
+    ]),
+  },
+  {
+    id: "melody-bell",
+    label: "Bell",
+    category: "melody",
+    shape: "oval",
+    octave: 2,
+    pattern: pattern([
+      [3, 4],
+      [7, 3],
+      [11, 2],
+    ]),
+  },
+  {
+    id: "melody-koto",
+    label: "Koto",
+    category: "melody",
+    shape: "trapezoid",
+    octave: 1,
+    pattern: pattern([
+      [1, 2],
+      [5, 0],
+      [8, 3],
+      [10, 1],
+      [13, 4],
     ]),
   },
   {
@@ -136,6 +198,27 @@ export const CHARACTERS: readonly CharacterDef[] = [
     ]),
   },
   {
+    id: "lead-brass",
+    label: "Brass",
+    category: "lead",
+    shape: "parallelogram",
+    octave: 2,
+    pattern: pattern([
+      [0, 0],
+      [6, 2],
+      [8, 3],
+      [14, 2],
+    ]),
+  },
+  {
+    id: "lead-siren",
+    label: "Siren",
+    category: "lead",
+    shape: "chevron",
+    octave: 2,
+    pattern: pattern([[10, 3]]),
+  },
+  {
     id: "fx-sparkle",
     label: "Sparkle",
     category: "fx",
@@ -145,11 +228,48 @@ export const CHARACTERS: readonly CharacterDef[] = [
     everyNthBar: 2,
   },
   {
+    id: "fx-blip",
+    label: "Blip",
+    category: "fx",
+    shape: "arrow",
+    octave: 3,
+    pattern: pattern([
+      [3, 4],
+      [11, 2],
+    ]),
+  },
+  {
+    id: "fx-zap",
+    label: "Zap",
+    category: "fx",
+    shape: "teardrop",
+    octave: 0,
+    pattern: pattern([[0, 0]]),
+    everyNthBar: 4,
+  },
+  {
     id: "texture-pad",
     label: "Pad",
     category: "texture",
     shape: "ring",
     octave: 0,
     pattern: pattern([[0, 0]]),
+  },
+  {
+    id: "texture-drone",
+    label: "Drone",
+    category: "texture",
+    shape: "arch",
+    octave: -2,
+    pattern: pattern([[0, 0]]),
+    everyNthBar: 2,
+  },
+  {
+    id: "texture-shimmer",
+    label: "Shimmer",
+    category: "texture",
+    shape: "semicircle",
+    octave: 3,
+    pattern: pattern([[8, 4]]),
   },
 ] as const;

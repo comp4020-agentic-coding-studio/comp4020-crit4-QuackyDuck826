@@ -136,6 +136,66 @@
   border-color: var(--character-color, #0b5fff);
 }
 
+.character--octagon .shape {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.character--cross .shape {
+  clip-path: polygon(
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 65%,
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0% 65%,
+    0% 35%,
+    35% 35%
+  );
+}
+
+.character--oval .shape {
+  width: 3.5rem;
+  height: 2.2rem;
+  border-radius: 50%;
+}
+
+.character--trapezoid .shape {
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.character--parallelogram .shape {
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
+.character--chevron .shape {
+  clip-path: polygon(0% 0%, 60% 0%, 100% 50%, 60% 100%, 0% 100%, 35% 50%);
+}
+
+.character--arrow .shape {
+  clip-path: polygon(50% 0%, 100% 50%, 75% 50%, 75% 100%, 25% 100%, 25% 50%, 0% 50%);
+}
+
+.character--teardrop .shape {
+  border-radius: 50% 50% 50% 0%;
+  transform: rotate(45deg);
+}
+
+.character--arch .shape {
+  width: 2.2rem;
+  height: 3.2rem;
+  border-radius: 50% 50% 0% 0% / 65% 65% 0% 0%;
+}
+
+.character--semicircle .shape {
+  width: 3.5rem;
+  height: 1.75rem;
+  border-radius: 3.5rem 3.5rem 0% 0%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .character.pulse .shape {
     animation: character-pulse 200ms ease-out;
@@ -151,11 +211,12 @@
   }
 }
 
-.character--diamond.pulse .shape {
-  animation-name: character-pulse-diamond;
+.character--diamond.pulse .shape,
+.character--teardrop.pulse .shape {
+  animation-name: character-pulse-rotated;
 }
 
-@keyframes character-pulse-diamond {
+@keyframes character-pulse-rotated {
   0% {
     transform: rotate(45deg) scale(1.35);
   }

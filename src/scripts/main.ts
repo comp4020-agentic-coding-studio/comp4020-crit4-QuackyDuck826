@@ -1,6 +1,23 @@
 import { Scheduler } from "./scheduler";
 import { BAR_SECONDS, BPM, CHARACTERS, STEPS_PER_BAR, scaleFreq } from "./characters";
-import { getNoiseBuffer, playArp, playBass, playHat, playKick, playPad, playPluck, playSparkle } from "./voices";
+import {
+  getNoiseBuffer,
+  playArp,
+  playBass,
+  playBell,
+  playBlip,
+  playBrass,
+  playClap,
+  playHat,
+  playKick,
+  playKoto,
+  playPad,
+  playPluck,
+  playShimmer,
+  playSiren,
+  playSparkle,
+  playZap,
+} from "./voices";
 
 let audioCtx: AudioContext | null = null;
 let masterGain: GainNode | null = null;
@@ -15,7 +32,10 @@ function ensureAudio(): AudioContext {
     audioCtx = new AudioContextCtor();
 
     masterGain = audioCtx.createGain();
-    masterGain.gain.value = 0.7;
+    // Lower than a single-layer instrument would need: up to 18 characters
+    // can now be active at once, and the compressor alone isn't enough
+    // headroom for that many additive voices.
+    masterGain.gain.value = 0.5;
     const compressor = audioCtx.createDynamicsCompressor();
     masterGain.connect(compressor).connect(audioCtx.destination);
 
@@ -48,23 +68,53 @@ function trigger(characterId: string, octave: number, degree: number, time: numb
     case "beat-hat":
       playHat(ctx, destination, time);
       break;
+    case "beat-clap":
+      playClap(ctx, destination, time);
+      break;
     case "bass-pulse":
       playBass(ctx, destination, time, scaleFreq(octave, degree), "triangle");
       break;
     case "bass-walk":
       playBass(ctx, destination, time, scaleFreq(octave, degree), "square");
       break;
+    case "bass-skip":
+      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine");
+      break;
     case "melody-pluck":
       playPluck(ctx, destination, time, scaleFreq(octave, degree));
+      break;
+    case "melody-bell":
+      playBell(ctx, destination, time, scaleFreq(octave, degree));
+      break;
+    case "melody-koto":
+      playKoto(ctx, destination, time, scaleFreq(octave, degree));
       break;
     case "lead-arp":
       playArp(ctx, destination, time, scaleFreq(octave, degree));
       break;
+    case "lead-brass":
+      playBrass(ctx, destination, time, scaleFreq(octave, degree));
+      break;
+    case "lead-siren":
+      playSiren(ctx, destination, time, scaleFreq(octave, degree));
+      break;
     case "fx-sparkle":
       playSparkle(ctx, destination, time, scaleFreq(octave, degree));
       break;
+    case "fx-blip":
+      playBlip(ctx, destination, time, scaleFreq(octave, degree));
+      break;
+    case "fx-zap":
+      playZap(ctx, destination, time);
+      break;
     case "texture-pad":
       playPad(ctx, destination, time, scaleFreq(octave, degree), BAR_SECONDS);
+      break;
+    case "texture-drone":
+      playPad(ctx, destination, time, scaleFreq(octave, degree), BAR_SECONDS * 2);
+      break;
+    case "texture-shimmer":
+      playShimmer(ctx, destination, time, scaleFreq(octave, degree), BAR_SECONDS);
       break;
   }
 }
