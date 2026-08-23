@@ -174,10 +174,15 @@ const BY_CATEGORY = {
       category: "melody",
       shape: "oval",
       octave: 2,
+      // Three hits spaced 4 steps apart but wrapping the bar in 8 (11 back
+      // to the next bar's 3) reads as a different meter than everything
+      // else. A fourth hit at 15 locks it to the same 4-steps-per-beat grid
+      // as the rest of the pattern.
       pattern: pattern([
         [3, 4],
         [7, 3],
         [11, 2],
+        [15, 1],
       ]),
     },
     {
