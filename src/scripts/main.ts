@@ -179,11 +179,6 @@ function setAllActive(active: boolean): void {
   }
 }
 
-document.querySelector<HTMLButtonElement>('[data-all-action="on"]')?.addEventListener("click", () => {
-  ensureAudio();
-  setAllActive(true);
-});
-
 document.querySelector<HTMLButtonElement>('[data-all-action="off"]')?.addEventListener("click", () => {
   setAllActive(false);
 });

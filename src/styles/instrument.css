@@ -72,11 +72,6 @@
   background: var(--character-color, #0b5fff);
 }
 
-.character .label {
-  font-size: 0.85rem;
-  text-align: center;
-}
-
 .character--beat {
   --character-color: #e05252;
 }
