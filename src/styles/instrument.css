@@ -93,10 +93,18 @@
 }
 
 .character--bass {
+  --character-color: #2fae4e;
+}
+
+[data-theme="dark"] .character--bass {
   --character-color: #3a7d44;
 }
 
 .character--melody {
+  --character-color: #e0a800;
+}
+
+[data-theme="dark"] .character--melody {
   --character-color: #cc8a1e;
 }
 
