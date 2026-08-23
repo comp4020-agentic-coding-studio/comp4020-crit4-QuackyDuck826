@@ -13,7 +13,22 @@ import { CHARACTERS } from "../scripts/characters";
   </header>
   <main>
     <h1>Loopwright</h1>
-    <p class="hint">Tap a shape to start.</p>
+    <p class="hint" id="hint">Tap a shape to start.</p>
+    <div class="character-grid">
+      {
+        CHARACTERS.map((character) => (
+          <button
+            type="button"
+            class={`character character--${character.category} character--${character.shape}`}
+            data-character-id={character.id}
+            aria-pressed="false"
+            aria-label={character.label}
+          >
+            <span class="shape" aria-hidden="true" />
+          </button>
+        ))
+      }
+    </div>
     <div class="all-controls">
       <button type="button" class="all-toggle" data-all-action="off" aria-label="Turn all off">
         <svg
@@ -33,21 +48,6 @@ import { CHARACTERS } from "../scripts/characters";
           <line x1="3" y1="3" x2="21" y2="21" />
         </svg>
       </button>
-    </div>
-    <div class="character-grid">
-      {
-        CHARACTERS.map((character) => (
-          <button
-            type="button"
-            class={`character character--${character.category} character--${character.shape}`}
-            data-character-id={character.id}
-            aria-pressed="false"
-            aria-label={character.label}
-          >
-            <span class="shape" aria-hidden="true" />
-          </button>
-        ))
-      }
     </div>
   </main>
   <script src="../scripts/main.ts"></script>

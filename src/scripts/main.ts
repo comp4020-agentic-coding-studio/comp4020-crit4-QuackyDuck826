@@ -25,6 +25,12 @@ let masterGain: GainNode | null = null;
 const activeFlags = new Map<string, boolean>();
 const buttonsById = new Map<string, HTMLButtonElement>();
 const pulseQueue: { id: string; time: number }[] = [];
+const hint = document.getElementById("hint");
+
+function updateHint(): void {
+  if (!hint) return;
+  hint.hidden = [...activeFlags.values()].some(Boolean);
+}
 
 function ensureAudio(): AudioContext {
   if (!audioCtx) {
@@ -168,6 +174,7 @@ for (const button of document.querySelectorAll<HTMLButtonElement>("[data-charact
     activeFlags.set(id, next);
     button.classList.toggle("is-active", next);
     button.setAttribute("aria-pressed", String(next));
+    updateHint();
   });
 }
 
@@ -177,6 +184,7 @@ function setAllActive(active: boolean): void {
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-pressed", String(active));
   }
+  updateHint();
 }
 
 document.querySelector<HTMLButtonElement>('[data-all-action="off"]')?.addEventListener("click", () => {
