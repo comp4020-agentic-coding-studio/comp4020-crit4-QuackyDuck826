@@ -72,13 +72,16 @@ function trigger(characterId: string, octave: number, degree: number, time: numb
       playClap(ctx, destination, time);
       break;
     case "bass-pulse":
-      playBass(ctx, destination, time, scaleFreq(octave, degree), "triangle");
+      // Triangle and sine read quieter than square at the same peak gain
+      // (less harmonic content), so pulse and skip get a boost square
+      // doesn't need.
+      playBass(ctx, destination, time, scaleFreq(octave, degree), "triangle", 0.7);
       break;
     case "bass-walk":
       playBass(ctx, destination, time, scaleFreq(octave, degree), "square");
       break;
     case "bass-skip":
-      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine");
+      playBass(ctx, destination, time, scaleFreq(octave, degree), "sine", 0.7);
       break;
     case "melody-pluck":
       playPluck(ctx, destination, time, scaleFreq(octave, degree));

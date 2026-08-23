@@ -65,6 +65,7 @@ export function playBass(
   time: number,
   freq: number,
   type: OscillatorType,
+  peak = 0.5,
 ): void {
   const osc = ctx.createOscillator();
   osc.type = type;
@@ -72,7 +73,7 @@ export function playBass(
 
   const gain = ctx.createGain();
   gain.gain.setValueAtTime(SILENCE, time);
-  gain.gain.linearRampToValueAtTime(0.5, time + 0.01);
+  gain.gain.linearRampToValueAtTime(peak, time + 0.01);
   gain.gain.exponentialRampToValueAtTime(SILENCE, time + 0.3);
 
   osc.connect(gain).connect(destination);

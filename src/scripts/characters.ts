@@ -245,7 +245,7 @@ export const CHARACTERS: readonly CharacterDef[] = [
     shape: "teardrop",
     octave: 0,
     pattern: pattern([[0, 0]]),
-    everyNthBar: 4,
+    everyNthBar: 2,
   },
   {
     id: "texture-pad",
