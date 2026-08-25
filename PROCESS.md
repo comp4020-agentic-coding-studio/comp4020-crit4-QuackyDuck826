@@ -2,7 +2,7 @@
 
 ## What I built
 
-I made an loop based instrument inspired by incredibox, where you play freely with which sections/beats play while they all remain in time and in tune in a way that makes it impossible to play wrong.
+GrooveGrid is a loop based instrument inspired by IncrediBox, eighteen tappable shapes house their own short synthesised phrase that can be toggled on and off freely. Because every phrase shares the same tempo and scale, any combination of them fits together in just the right way.
 
 ## The moments that mattered
 
